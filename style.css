@@ -532,7 +532,7 @@ body {
 .overlay-photo-box {
     position: absolute;
     left: 31.97%;
-    top: 38.35%;
+    top: 39.5%;
     width: 32.24%;
     height: 18.18%;
     border-radius: 15%; /* Responsive rounded corners */
@@ -546,11 +546,12 @@ body {
     object-fit: cover;
 }
 
+
 /* Overlay 2: Dynamic Validity Date */
 .overlay-validity-box {
     position: absolute;
     left: 31.42%;
-    top: 74.43%;
+    top: 75.43%;
     width: 34.43%;
     height: 3.41%;
     background-color: hsl(43, 42%, 85%); /* Covers original static date */

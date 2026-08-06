@@ -687,9 +687,9 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     font-weight: 800;
-    color: #000;
+    color: #363535;
     z-index: 2;
 }
 
@@ -719,9 +719,9 @@ body {
 
 .overlay-live-time {
     font-family: monospace;
-    font-size: 0.76rem;
+    font-size: 0.96rem;
     font-weight: 800;
-    color: #000;
+    color: #7c7467;
     letter-spacing: 0.2px;
 }
 

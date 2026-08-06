@@ -29,53 +29,16 @@ body {
     overflow: hidden;
 }
 
-/* Desktop Layout Shell - Expanded for Full-screen */
-.app-container {
-    display: block;
+/* Screen Shell - Fills browser window completely on all screens */
+.phone-screen {
     width: 100%;
     height: 100vh;
-    padding: 0;
-    margin: 0;
-}
-
-.info-panel {
-    display: none; /* Hide desktop description panel completely */
-}
-
-/* Phone Frame Mockup - Converted to Full Screen Wrapper */
-.phone-mockup {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    position: relative;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-}
-
-/* Status Bar & Notch - Removed for Real Mobile Viewport */
-.phone-header {
-    display: none;
-}
-
-.notch {
-    display: none;
-}
-
-/* Screen Shell - Fills browser window completely */
-.phone-screen {
-    flex: 1;
     background: var(--bg-phone);
-    border-radius: 0;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 0; /* Cleared for fullscreen display */
+    padding-top: 0; /* Let web contents fit device screen naturally */
     padding-bottom: 74px; /* Space for bottom nav */
 }
 
@@ -123,8 +86,8 @@ body {
     left: 0;
     right: 0;
     height: 74px;
-    background: #ffffff;
-    border-top: 1px solid var(--border-color);
+    background: #000000;
+    border-top: 1px solid #1c1c1e;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -138,7 +101,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    color: #8a8a8f;
+    color: #8e8e93;
     text-decoration: none;
     cursor: pointer;
     font-size: 0.65rem;
@@ -568,28 +531,28 @@ body {
 /* Overlay 1: Yellow Shirt Photo */
 .overlay-photo-box {
     position: absolute;
-    left: 117px;
-    top: 270px;
-    width: 118px;
-    height: 128px;
-    border-radius: 20px;
+    left: 31.97%;
+    top: 38.35%;
+    width: 32.24%;
+    height: 18.18%;
+    border-radius: 15%; /* Responsive rounded corners */
     overflow: hidden;
     z-index: 1;
 }
 
 .overlay-photo-box img {
-    width: 98%;
-    height: 98%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 /* Overlay 2: Dynamic Validity Date */
 .overlay-validity-box {
     position: absolute;
-    left: 115px;
-    top: 524px;
-    width: 126px;
-    height: 24px;
+    left: 31.42%;
+    top: 74.43%;
+    width: 34.43%;
+    height: 3.41%;
     background-color: hsl(43, 42%, 85%); /* Covers original static date */
     display: flex;
     justify-content: center;
@@ -604,10 +567,10 @@ body {
 /* Overlay 3: Live Ticking Clock Box */
 .overlay-clock-box {
     position: absolute;
-    left: 18px;
-    top: 590px;
-    width: 88px;
-    height: 58px;
+    left: 4.92%;
+    top: 83.8%;
+    width: 24.04%;
+    height: 8.24%;
     background-color: hsl(43, 42%, 85%);
     border-radius: 12px;
     display: flex;
@@ -1488,4 +1451,6 @@ input:checked + .switch-slider:before {
     width: 100%;
     cursor: pointer;
 }
+
+/* End of Stylesheet */
 

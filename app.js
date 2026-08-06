@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
             targetView.classList.add('active');
         }
 
-        // Adjust Status Bar Text Color dynamically for the view
-        if (targetViewId === 'passes') {
-            statusHeader.classList.remove('dark-text');
-        } else {
-            statusHeader.classList.add('dark-text');
+        // Adjust Status Bar Text Color dynamically for the view if header exists
+        if (statusHeader) {
+            if (targetViewId === 'passes') {
+                statusHeader.classList.remove('dark-text');
+            } else {
+                statusHeader.classList.add('dark-text');
+            }
         }
 
         // Save last active view to sessionStorage
@@ -50,13 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateClock() {
         const now = new Date();
 
-        // 1. Status Bar Time (e.g., "6:43" in 12-hour format)
-        let hours = now.getHours();
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        statusBarTime.textContent = `${hours}:${minutes}`;
+        // 1. Status Bar Time (e.g., "6:43" in 12-hour format) if element exists
+        if (statusBarTime) {
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            statusBarTime.textContent = `${hours}:${minutes}`;
+        }
 
         // 2. Pass Live Date (e.g., "Aug 6")
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

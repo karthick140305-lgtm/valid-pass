@@ -8,71 +8,8 @@
 </head>
 <body>
 
-    <div class="app-container">
-        
-        <!-- Desktop Info Panel -->
-        <div class="info-panel">
-            <h1>Chennai One Web Prototype</h1>
-            <p>An interactive, high-fidelity mobile prototype of the Chennai One transport app. Switch between pages using the phone's bottom navigation bar.</p>
-            
-            <ul class="feature-list">
-                <li>
-                    <span class="icon-badge">1</span>
-                    <div>
-                        <strong>Live Pass Clock</strong>
-                        <p>The date and time box on the Monthly Pass ticks live down to the second.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="icon-badge">2</span>
-                    <div>
-                        <strong>Interactive Validity Editor</strong>
-                        <p>Navigate to the <strong>Profile</strong> tab, scroll down below Safety, and select a custom validity date. The pass updates instantly and persists across refreshes.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="icon-badge">3</span>
-                    <div>
-                        <strong>Verified User Portrait</strong>
-                        <p>The official passport photo of the user in a yellow shirt is framed securely inside the pass.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="icon-badge">4</span>
-                    <div>
-                        <strong>Mock Pages</strong>
-                        <p>Navigate between Home, Passes, Live status, Past Tickets, and Profile screens.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Phone Device Frame -->
-        <div class="phone-mockup">
-            <div class="notch"></div>
-            
-            <!-- Phone Header Status Bar -->
-            <div class="phone-header">
-                <span id="status-time">6:43</span>
-                <div class="status-right">
-                    <!-- Signal reception icon -->
-                    <svg viewBox="0 0 24 24">
-                        <path d="M2 22h20V2z" />
-                    </svg>
-                    <!-- Wifi icon -->
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 21l-12-12c5-5 14-5 19 0z" />
-                    </svg>
-                    <!-- Battery icon (58% Green) -->
-                    <span style="font-size: 0.72rem; margin-right: 2px;">58%</span>
-                    <svg viewBox="0 0 24 24" style="fill: #28a745;">
-                        <path d="M17 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z M21 9h2v6h-2z" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Phone Screen Content -->
-            <div class="phone-screen">
+    <!-- Main Application Container -->
+    <div class="phone-screen">
                 <div class="screen-content">
 
                     <!-- ================= VIEW 1: HOME ================= -->
@@ -220,7 +157,7 @@
 
                         <!-- Overlay 1: Yellow Shirt Photo -->
                         <div class="overlay-photo-box">
-                            <img src="yellow_shirt.jpg" alt="User Photo">
+                            <img src="yellow_shirt.jpeg" alt="User Photo">
                         </div>
 
                         <!-- Overlay 2: Dynamic Validity Date -->
@@ -579,11 +516,8 @@
                     </div>
                 </div>
 
-                <div class="home-indicator"></div>
             </div>
         </div>
-
-    </div>
 
     <script src="app.js"></script>
 </body>

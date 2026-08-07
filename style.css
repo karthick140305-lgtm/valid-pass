@@ -564,7 +564,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #373636;
     z-index: 2;
@@ -574,7 +574,7 @@ body {
 .overlay-clock-box {
     position: absolute;
     left: 7.42%;
-    top: 85.8%;
+    top: 85.0%;
     width: 24.04%;
     height: 8.24%;
     background-color: hsl(43, 42%, 85%);

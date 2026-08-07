@@ -101,7 +101,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    color: #8e8e93;
+    color: #a2a2ab;
     text-decoration: none;
     cursor: pointer;
     font-size: 0.65rem;
@@ -117,12 +117,17 @@ body {
 }
 
 .bottom-nav-item.active {
-    color: var(--accent-red);
     font-weight: 700;
 }
 
 .bottom-nav-item.active svg {
+    color: var(--accent-red);
+    stroke: var(--accent-red);
     transform: scale(1.05);
+}
+
+.bottom-nav-item.active span {
+    color: #ffffff;
 }
 
 .home-indicator {
@@ -531,9 +536,9 @@ body {
 /* Overlay 1: Yellow Shirt Photo */
 .overlay-photo-box {
     position: absolute;
-    left: 31.97%;
-    top: 39.5%;
-    width: 32.24%;
+    left: 35.57%;
+    top: 40.5%;
+    width: 30.24%;
     height: 18.18%;
     border-radius: 15%; /* Responsive rounded corners */
     overflow: hidden;
@@ -542,7 +547,7 @@ body {
 
 .overlay-photo-box img {
     width: 100%;
-    height: 100%;
+    height: 116%;
     object-fit: cover;
 }
 
@@ -550,26 +555,26 @@ body {
 /* Overlay 2: Dynamic Validity Date */
 .overlay-validity-box {
     position: absolute;
-    left: 31.42%;
-    top: 75.43%;
-    width: 34.43%;
+    left: 32.72%;
+    top: 73.03%;
+    width: 35.43%;
     height: 3.41%;
     background-color: hsl(43, 42%, 85%); /* Covers original static date */
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Outfit', sans-serif;
-    font-size: 1.0rem;
-    font-weight: 800;
-    color: #363535;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #373636;
     z-index: 2;
 }
 
 /* Overlay 3: Live Ticking Clock Box */
 .overlay-clock-box {
     position: absolute;
-    left: 4.92%;
-    top: 83.8%;
+    left: 7.42%;
+    top: 85.8%;
     width: 24.04%;
     height: 8.24%;
     background-color: hsl(43, 42%, 85%);

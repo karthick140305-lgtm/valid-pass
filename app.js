@@ -80,6 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (passLiveTime) {
             passLiveTime.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`;
         }
+
+        // Keep popup timestamp ticking synchronously
+        const popupLiveDate = document.getElementById('popup-live-date');
+        const popupLiveTime = document.getElementById('popup-live-time');
+        if (popupLiveDate) {
+            popupLiveDate.textContent = `${currentMonth} ${currentDate}`;
+        }
+        if (popupLiveTime) {
+            popupLiveTime.textContent = `${displayHours}:${displayMinutes}:${displaySeconds}`;
+        }
     }
 
     // Run clock updates
@@ -434,5 +444,77 @@ document.addEventListener('DOMContentLoaded', () => {
         homeSearch.addEventListener('click', () => {
             showToast("Search bus routes...");
         });
+    }
+
+
+    // --- Pass Interactive Popups (Timestamp, Photo, Pass Activated) ---
+    const passModal = document.getElementById('pass-popup-modal');
+    const popupContents = document.querySelectorAll('.popup-content');
+    const popupPhotoImg = document.getElementById('popup-photo-img');
+    const userPhoto = document.querySelector('.overlay-photo-box img');
+
+    function openPassPopup(type) {
+        if (!passModal) return;
+
+        // Keep photo in sync with current avatar
+        if (type === 'photo' && popupPhotoImg && userPhoto) {
+            popupPhotoImg.src = userPhoto.src;
+        }
+
+        // Hide all popup contents first
+        popupContents.forEach(content => content.classList.remove('active'));
+
+        // Show target popup content
+        const targetContent = document.getElementById(`popup-content-${type}`);
+        if (targetContent) {
+            targetContent.classList.add('active');
+            passModal.classList.add('active');
+        }
+    }
+
+    function closePassPopup() {
+        if (!passModal) return;
+        passModal.classList.remove('active');
+        setTimeout(() => {
+            popupContents.forEach(content => content.classList.remove('active'));
+        }, 250);
+    }
+
+    // Dismiss when tapping anywhere on the modal overlay or card
+    if (passModal) {
+        passModal.addEventListener('click', closePassPopup);
+    }
+
+    // Attach click triggers on the pass elements
+    const clockTrigger = document.getElementById('pass-clock-trigger');
+    const photoTrigger = document.getElementById('pass-photo-trigger');
+    const activatedTrigger = document.getElementById('pass-activated-trigger');
+
+    if (clockTrigger) {
+        clockTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openPassPopup('timestamp');
+        });
+    }
+
+    if (photoTrigger) {
+        photoTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openPassPopup('photo');
+        });
+    }
+
+    if (activatedTrigger) {
+        activatedTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openPassPopup('activated');
+        });
+    }
+
+    // Auto open popup if requested via URL param (e.g. ?popup=timestamp)
+    const urlParams = new URLSearchParams(window.location.search);
+    const autoPopup = urlParams.get('popup');
+    if (autoPopup) {
+        openPassPopup(autoPopup);
     }
 });

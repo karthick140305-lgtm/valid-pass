@@ -177,7 +177,7 @@
                 <img src="passes_background.png" class="passes-bg-img" alt="Pass Background">
 
                 <!-- Overlay 1: Yellow Shirt Photo -->
-                <div class="overlay-photo-box">
+                <div class="overlay-photo-box" id="pass-photo-trigger" title="View Photo">
                     <img src="yellow_shirt.jpeg" alt="User Photo">
                 </div>
 
@@ -188,10 +188,13 @@
                 </div>
 
                 <!-- Overlay 3: Live Ticking Clock Box -->
-                <div class="overlay-clock-box" style="background-color: hsl(43, 42%, 85%);">
+                <div class="overlay-clock-box" id="pass-clock-trigger" title="View Live Clock" style="background-color: hsl(43, 42%, 85%);">
                     <span class="overlay-live-date" id="pass-live-date">Aug 6</span>
                     <span class="overlay-live-time" id="pass-live-time">06:30:33</span>
                 </div>
+
+                <!-- Overlay 4: Clickable Pass Activated Label Hotspot -->
+                <div class="overlay-activated-box" id="pass-activated-trigger" title="Pass Activated"></div>
             </div>
 
             <!-- ================= VIEW 3: LIVE ================= -->
@@ -583,6 +586,34 @@
 
     </div>
     </div>
+
+    
+        <!-- Popups Modal Overlay (Used for Timestamp, Photo, Pass Activated) -->
+        <div id="pass-popup-modal" class="pass-modal-overlay">
+            <div class="pass-modal-container">
+                <!-- Timestamp Popup Content -->
+                <div id="popup-content-timestamp" class="popup-content">
+                    <div class="popup-timestamp-card">
+                        <div class="popup-live-date" id="popup-live-date">Aug 6</div>
+                        <div class="popup-live-time" id="popup-live-time">06:30:33</div>
+                    </div>
+                </div>
+
+                <!-- Photo Popup Content -->
+                <div id="popup-content-photo" class="popup-content">
+                    <div class="popup-photo-card">
+                        <img id="popup-photo-img" src="yellow_shirt.jpeg" alt="User Photo Enlarge" class="popup-photo-img">
+                    </div>
+                </div>
+
+                <!-- Pass Activated Popup Content -->
+                <div id="popup-content-activated" class="popup-content">
+                    <div class="popup-activated-card">
+                        <img src="pass_activated_badge.png" alt="Pass Activated" class="popup-activated-img">
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script src="app.js"></script>
 </body>

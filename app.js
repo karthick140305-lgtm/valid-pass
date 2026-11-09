@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetNav && targetView) {
             targetNav.classList.add('active');
             targetView.classList.add('active');
+            if (targetViewId === 'live' && typeof updateBookingDisplay === 'function') {
+                updateBookingDisplay();
+            }
         }
 
         // Adjust Status Bar Text Color dynamically for the view if header exists
@@ -516,5 +519,99 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoPopup = urlParams.get('popup');
     if (autoPopup) {
         openPassPopup(autoPopup);
+    }
+    // --- Bus Ticket Booking Screen Keypad & Interaction Logic ---
+    let bookingCode = '';
+    const maxDigits = 5;
+
+    function updateBookingDisplay() {
+        const slots = document.querySelectorAll('.code-slot');
+        slots.forEach((slot, idx) => {
+            const charSpan = slot.querySelector('.slot-char');
+            if (idx < bookingCode.length) {
+                if (charSpan) charSpan.textContent = bookingCode[idx];
+                slot.classList.remove('active');
+            } else {
+                if (charSpan) charSpan.textContent = '';
+                if (idx === bookingCode.length) {
+                    slot.classList.add('active');
+                } else {
+                    slot.classList.remove('active');
+                }
+            }
+        });
+
+        const bookBtn = document.getElementById('book-ticket-btn');
+        if (bookBtn) {
+            if (bookingCode.length === maxDigits) {
+                bookBtn.disabled = false;
+                bookBtn.classList.add('active');
+            } else {
+                bookBtn.disabled = true;
+                bookBtn.classList.remove('active');
+            }
+        }
+    }
+
+    const keypadBtns = document.querySelectorAll('.keypad-btn');
+    keypadBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const key = btn.getAttribute('data-key');
+            if (key === 'clear') {
+                bookingCode = '';
+                updateBookingDisplay();
+            } else if (key === 'backspace') {
+                if (bookingCode.length > 0) {
+                    bookingCode = bookingCode.slice(0, -1);
+                    updateBookingDisplay();
+                }
+            } else if (key && bookingCode.length < maxDigits) {
+                bookingCode += key;
+                updateBookingDisplay();
+            }
+        });
+    });
+
+    // Recent Route Quick Chips
+    const routeChips = document.querySelectorAll('.route-chip');
+    routeChips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const code = chip.getAttribute('data-code');
+            if (code) {
+                bookingCode = code.slice(0, maxDigits);
+                updateBookingDisplay();
+            }
+        });
+    });
+
+    // Booking Screen Back Button
+    const bookingBackBtn = document.getElementById('booking-back-btn');
+    if (bookingBackBtn) {
+        bookingBackBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            switchView('passes');
+        });
+    }
+
+    // Scan QR button
+    const scanQrBtn = document.getElementById('scan-qr-btn');
+    if (scanQrBtn) {
+        scanQrBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            alert('Scan QR: Point camera at the bus QR code to book instantly.');
+        });
+    }
+
+    // Book Bus Ticket Action Button
+    const bookActionBtn = document.getElementById('book-ticket-btn');
+    if (bookActionBtn) {
+        bookActionBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (bookingCode.length === maxDigits) {
+                alert(`Proceeding to ticket booking for Bus Route: ${bookingCode}`);
+            }
+        });
     }
 });

@@ -91,8 +91,9 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
     z-index: 100;
+    box-sizing: border-box;
 }
 
 .bottom-nav-item {
@@ -100,62 +101,116 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 3px;
     color: #a2a2ab;
     text-decoration: none;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     font-weight: 500;
+    transition: transform 0.15s ease, color 0.15s ease;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 68px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item:active {
+    transform: scale(0.94);
+}
+
+.bottom-nav-item .nav-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    color: #a2a2ab;
     transition: color 0.2s;
-    width: 20%;
 }
 
-.bottom-nav-item svg {
-    width: 28px;
-    height: 28px;
-    transition: transform 0.15s;
+.bottom-nav-item span {
+    color: #a2a2ab;
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1.1;
+    white-space: nowrap;
+    transition: color 0.2s;
 }
 
-.bottom-nav-item.active {
+/* Active State */
+.bottom-nav-item.active span {
+    color: #ffffff;
     font-weight: 700;
 }
 
-.bottom-nav-item.active svg {
-    color: var(--accent-red);
-    stroke: var(--accent-red);
-    transform: scale(1.05);
-}
-
-.bottom-nav-item.active span {
+.bottom-nav-item.active .nav-icon {
     color: #ffffff;
 }
 
-.home-indicator {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 130px;
-    height: 5px;
-    background: #000;
-    border-radius: 100px;
-    z-index: 101;
+/* Pass Badge Icon */
+.nav-pass-badge {
+    width: 28px;
+    height: 21px;
+    background: #3a3a3c;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
-.bottom-nav.dark-theme {
-    background: #111;
-    border-top: 1px solid #222;
-}
-.bottom-nav.dark-theme .bottom-nav-item {
-    color: #666;
-}
-.bottom-nav.dark-theme .bottom-nav-item.active {
-    color: var(--accent-red);
-}
-.bottom-nav.dark-theme .home-indicator {
-    background: #fff;
+.nav-pass-badge svg {
+    width: 24px;
+    height: 18px;
+    display: block;
 }
 
+.bottom-nav-item.active .nav-pass-badge {
+    background: #ee4437;
+    transform: scale(1.05);
+}
+
+/* Center BUS TICKET Button */
+.nav-bus-ticket {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    padding: 0 2px;
+}
+
+.nav-bus-ticket-btn {
+    width: 82px;
+    height: 52px;
+    background: radial-gradient(circle at 50% 12%, #8575ff 0%, #3567ff 45%, #433beb 100%);
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(53, 103, 255, 0.45);
+    gap: 2px;
+    padding: 4px 0;
+    box-sizing: border-box;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav-bus-ticket:active .nav-bus-ticket-btn {
+    transform: scale(0.94);
+    box-shadow: 0 2px 8px rgba(43, 110, 255, 0.35);
+}
+
+.bus-ticket-svg {
+    width: 44px;
+    height: 21px;
+    display: block;
+}
+
+.nav-bus-ticket-btn span {
+    color: #ffffff !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    font-size: 0.56rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1px;
+    line-height: 1;
+}
 
 /* ================= PAGE 1: HOME PAGE ================= */
 #view-home {
@@ -613,144 +668,313 @@ body {
 }
 
 
-/* ================= PAGE 3: LIVE PAGE ================= */
-#view-live {
-    background: #fff;
-    color: #000;
-    padding: 20px;
+/* ================= PAGE 3: BUS TICKET BOOKING SCREEN ================= */
+#view-live.bus-booking-view {
+    background: #000000;
+    color: #1e1e24;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 105;
+    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.live-vehicles-graphic {
-    flex: 1;
-    width: 100%;
+/* Header Area */
+.booking-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px 14px 18px;
+    background: #000000;
     position: relative;
+    z-index: 2;
+}
+
+.booking-back-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    cursor: pointer;
+    color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Custom CSS drawings representing the illustrations */
-.metro-illustration {
-    position: absolute;
-    top: 15px;
-    right: -20px;
-    width: 180px;
-    height: 70px;
-    background: linear-gradient(90deg, #e5e7eb 70%, #9ca3af 100%);
-    border-radius: 30px;
-    transform: rotate(-10deg);
-    border: 3px solid #374151;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.metro-window {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    width: 110px;
-    height: 20px;
-    background: #1f2937;
-    border-radius: 5px;
+.booking-back-btn:active {
+    transform: scale(0.92);
 }
 
-.auto-illustration {
-    width: 180px;
-    height: 140px;
-    position: relative;
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%); /* Green bottom */
-    border-radius: 30px;
-    border: 4px solid #1f2937;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    margin-top: 30px;
-}
-.auto-top {
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    width: 180px;
-    height: 65px;
-    background: #fcd85c; /* Yellow top */
-    border-top-left-radius: 26px;
-    border-top-right-radius: 26px;
-    border: 4px solid #1f2937;
-    border-bottom: none;
-}
-.auto-window {
-    width: 110px;
-    height: 40px;
-    background: #374151;
-    border-radius: 10px;
-    margin: 10px auto 0 auto;
-    border: 3px solid #1f2937;
-}
-.auto-wheel {
-    width: 40px;
-    height: 40px;
-    background: #111;
-    border-radius: 50%;
-    border: 8px solid #9ca3af;
-    position: absolute;
-    bottom: -20px;
-}
-.auto-wheel-left { left: 15px; }
-.auto-wheel-right { right: 15px; }
-
-.live-content-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 40px;
-    text-align: center;
-    width: 100%;
+.booking-back-btn svg {
+    width: 22px;
+    height: 22px;
 }
 
-.live-no-journey-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #1e1e24;
-    line-height: 1.4;
-    max-width: 80%;
-}
-
-.live-plan-btn {
-    background: var(--accent-blue);
-    color: #fff;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 700;
+.scan-qr-pill {
+    background: #ffffff;
+    border: 1px solid #dcdce0;
+    border-radius: 28px;
+    padding: 9px 20px;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.live-plan-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 102, 204, 0.4);
+.scan-qr-pill:active {
+    transform: scale(0.94);
 }
 
-.live-plan-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
+.scan-qr-pill svg {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
+.scan-qr-pill span {
+    color: #0056e0;
+    font-weight: 700;
+    font-size: 0.96rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.2px;
+}
+
+/* White Bottom Sheet */
+.booking-sheet {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 28px 28px 0 0;
+    padding: 18px 20px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tamil Thirukkural Quote */
+.booking-quote-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 36px;
+}
+
+.tamil-quote-box {
+    border: 1px solid #c7c7cc;
+    border-radius: 12px;
+    padding: 9px 16px;
+    text-align: center;
+    background: #ffffff;
+    max-width: 270px;
+}
+
+.tamil-quote-box p {
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 0.68rem;
+    color: #4a4a4e;
+    line-height: 1.45;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Code Underline Slots */
+.code-slots-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 18px;
+    margin-bottom: 28px;
+    padding: 0 10px;
+}
+
+.code-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 44px;
+    height: 48px;
+    justify-content: flex-end;
+}
+
+.slot-char {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #1c1c1e;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slot-dash {
+    width: 100%;
+    height: 3.5px;
+    background: #c7c7cc;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.code-slot.active .slot-dash {
+    background: #0056e0;
+}
+
+/* Book Bus Ticket Action Button */
+.book-ticket-action-btn {
+    width: 100%;
+    height: 52px;
+    background: #c8c8cc;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: not-allowed;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.book-ticket-action-btn.active {
+    background: #0056e0;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 86, 224, 0.35);
+}
+
+.book-ticket-action-btn.active:active {
+    transform: scale(0.98);
+}
+
+/* Recent Bus Route Chips */
+.recent-routes-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    margin-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.recent-routes-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.route-chip {
+    background: #ffffff;
+    border: 1px solid #e0e0e4;
+    border-radius: 12px;
+    padding: 7px 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #48484a;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.route-chip:active {
+    background: #f2f2f7;
+    transform: scale(0.95);
+}
+
+/* Letter Keys Row */
+.keypad-letters-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.keypad-letters-row .key-letter {
+    flex: 1;
+    height: 54px;
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #1c1c1e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, background 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.keypad-letters-row .key-letter:active {
+    background: #e5e5ea;
+    transform: scale(0.92);
+}
+
+/* Numeric Keypad Grid */
+.keypad-num-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 12px;
+    margin-top: auto;
+    padding-bottom: 6px;
+}
+
+.keypad-num-grid .keypad-btn {
+    height: 52px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #8e8e93;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.1s ease, transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.keypad-num-grid .keypad-btn:active {
+    background: rgba(0, 0, 0, 0.06);
+    transform: scale(0.92);
+}
+
+.keypad-num-grid .key-clear {
+    font-family: 'Courier New', monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #3a3a3c;
+    letter-spacing: 0.5px;
+}
+
+.keypad-num-grid .key-backspace svg {
+    width: 24px;
+    height: 24px;
+    color: #3a3a3c;
+}
 
 /* ================= PAGE 4: TICKET PAGE ================= */
 #view-ticket {

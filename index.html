@@ -197,31 +197,99 @@
                 <div class="overlay-activated-box" id="pass-activated-trigger" title="Pass Activated"></div>
             </div>
 
-            <!-- ================= VIEW 3: LIVE ================= -->
-            <div id="view-live" class="view">
-                <div class="live-vehicles-graphic">
-                    <!-- Custom CSS Metro and Auto illustrations -->
-                    <div class="metro-illustration">
-                        <div class="metro-window"></div>
-                    </div>
-                    <div class="auto-illustration">
-                        <div class="auto-top">
-                            <div class="auto-window"></div>
-                        </div>
-                        <div class="auto-wheel auto-wheel-left"></div>
-                        <div class="auto-wheel auto-wheel-right"></div>
-                    </div>
+                        <!-- ================= VIEW 3: LIVE / BUS TICKET BOOKING ================= -->
+            <div id="view-live" class="view bus-booking-view">
+                <!-- Top Header Area -->
+                <div class="booking-top-bar">
+                    <button class="booking-back-btn" id="booking-back-btn" aria-label="Back">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="scan-qr-pill" id="scan-qr-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#0056e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                            <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                            <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                            <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                            <rect x="7" y="7" width="3" height="3" fill="#0056e0"></rect>
+                            <rect x="14" y="7" width="3" height="3" fill="#0056e0"></rect>
+                            <rect x="7" y="14" width="3" height="3" fill="#0056e0"></rect>
+                            <rect x="14" y="14" width="3" height="3" fill="#0056e0"></rect>
+                        </svg>
+                        <span>Scan QR</span>
+                    </button>
+                    <div style="width: 42px;"></div> <!-- Spacer -->
                 </div>
 
-                <div class="live-content-bottom">
-                    <h2 class="live-no-journey-title">You don't have any active journey now!</h2>
-                    <button class="live-plan-btn">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                        Plan a journey now
+                <!-- White Card Container -->
+                <div class="booking-sheet">
+                    <!-- Tamil Quote Badge -->
+                    <div class="booking-quote-row">
+                        <div class="tamil-quote-box">
+                            <p>தெய்வத்தான் ஆகா தெனினும் முயற்சிதன்</p>
+                            <p>மெய்வருத்தக் கூலி தரும்</p>
+                        </div>
+                    </div>
+
+                    <!-- 5 Slot Code Input Display -->
+                    <div class="code-slots-container">
+                        <div class="code-slot active" data-index="0"><span class="slot-char"></span><div class="slot-dash"></div></div>
+                        <div class="code-slot" data-index="1"><span class="slot-char"></span><div class="slot-dash"></div></div>
+                        <div class="code-slot" data-index="2"><span class="slot-char"></span><div class="slot-dash"></div></div>
+                        <div class="code-slot" data-index="3"><span class="slot-char"></span><div class="slot-dash"></div></div>
+                        <div class="code-slot" data-index="4"><span class="slot-char"></span><div class="slot-dash"></div></div>
+                    </div>
+
+                    <!-- Book Bus Ticket Action Button -->
+                    <button class="book-ticket-action-btn" id="book-ticket-btn" disabled>
+                        Book Bus Ticket &gt;&gt;
                     </button>
+
+                    <!-- Recent Bus Code Quick Select Pills -->
+                    <div class="recent-routes-scroll">
+                        <button class="route-chip" data-code="K0663">K0663</button>
+                        <button class="route-chip" data-code="J1126">J1126</button>
+                        <button class="route-chip" data-code="K1429">K1429</button>
+                        <button class="route-chip" data-code="J0649">J0649</button>
+                        <button class="route-chip" data-code="J1024">J1024</button>
+                    </div>
+
+                    <!-- Keypad Row 1: Depot Letters -->
+                    <div class="keypad-letters-row">
+                        <button class="keypad-btn key-letter" data-key="I">I</button>
+                        <button class="keypad-btn key-letter" data-key="S">S</button>
+                        <button class="keypad-btn key-letter" data-key="J">J</button>
+                        <button class="keypad-btn key-letter" data-key="K">K</button>
+                        <button class="keypad-btn key-letter" data-key="L">L</button>
+                    </div>
+
+                    <!-- Keypad Grid: Numbers + Clear + Backspace -->
+                    <div class="keypad-num-grid">
+                        <button class="keypad-btn key-num" data-key="1">1</button>
+                        <button class="keypad-btn key-num" data-key="2">2</button>
+                        <button class="keypad-btn key-num" data-key="3">3</button>
+
+                        <button class="keypad-btn key-num" data-key="4">4</button>
+                        <button class="keypad-btn key-num" data-key="5">5</button>
+                        <button class="keypad-btn key-num" data-key="6">6</button>
+
+                        <button class="keypad-btn key-num" data-key="7">7</button>
+                        <button class="keypad-btn key-num" data-key="8">8</button>
+                        <button class="keypad-btn key-num" data-key="9">9</button>
+
+                        <button class="keypad-btn key-action key-clear" data-key="clear">Clear</button>
+                        <button class="keypad-btn key-num" data-key="0">0</button>
+                        <button class="keypad-btn key-action key-backspace" data-key="backspace">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                <line x1="18" y1="9" x2="12" y2="15"></line>
+                                <line x1="12" y1="9" x2="18" y2="15"></line>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -520,49 +588,65 @@
 
         <!-- Phone Bottom Navigation Bar -->
         <div class="bottom-nav">
+            <!-- 1. Home -->
             <a class="bottom-nav-item" data-view="home">
-                <!-- Home Icon: Custom double signpost -->
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="12" y="15" width="2" height="5" rx="0.5" />
-                    <rect x="6" y="6" width="14" height="4" rx="1.5" />
-                    <rect x="6" y="11" width="14" height="4" rx="1.5" />
+                <svg viewBox="0 0 24 24" class="nav-icon" fill="currentColor">
+                    <path d="M 5 3.5 A 0.5 0.5 0 0 1 5.5 3 H 15.5 L 19.2 6.5 L 15.5 10 H 5.5 A 0.5 0.5 0 0 1 5 9.5 Z" />
+                    <path d="M 8.5 12 H 18.5 A 0.5 0.5 0 0 1 19 12.5 V 18.5 A 0.5 0.5 0 0 1 18.5 19 H 8.5 L 4.8 15.5 L 8.5 12 Z" />
+                    <rect x="11" y="19" width="2" height="3.5" rx="0.5" />
                 </svg>
                 <span>Home</span>
             </a>
-            <a class="bottom-nav-item active" data-view="passes">
-                <!-- Passes Icon: Chennai One App Logo -->
-                <svg viewBox="0 0 28 22" fill="none">
-                    <rect x="1" y="1.5" width="30" height="19" rx="3" fill="currentColor" />
-                    <path d="M 3 16 A 5 5 0 0 1 24 16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"
-                        fill="none" />
-                    <path d="M 9.5 14 L 12 11.5 V 17.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round" fill="none" />
-                </svg>
-                <span>Passes</span>
-            </a>
-            <a class="bottom-nav-item" data-view="live">
-                <!-- Live status Icon: Target concentric -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <circle cx="12" cy="12" r="6" />
-                    <circle cx="12" cy="12" r="3" fill="currentColor" />
-                </svg>
-                <span>Live</span>
-            </a>
+
+            <!-- 2. Tickets -->
             <a class="bottom-nav-item" data-view="ticket">
-                <!-- Ticket Icon: Custom vertical notched ticket -->
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M 7 4 H 10 A 2 2 0 0 0 14 4 H 17 A 2 2 0 0 1 19 6 V 18 A 2 2 0 0 1 17 20 H 14 A 2 2 0 0 0 10 20 H 7 A 2 2 0 0 1 5 18 V 6 A 2 2 0 0 1 7 4 Z" />
+                <svg viewBox="0 0 24 24" class="nav-icon" fill="currentColor">
+                    <path d="M 7 3 H 9.5 A 2.5 2.5 0 0 0 14.5 3 H 17 A 2 2 0 0 1 19 5 V 19 A 2 2 0 0 1 17 21 H 14.5 A 2.5 2.5 0 0 0 9.5 21 H 7 A 2 2 0 0 1 5 19 V 5 A 2 2 0 0 1 7 3 Z" />
                 </svg>
-                <span>Ticket</span>
+                <span>Tickets</span>
             </a>
+
+            <!-- 3. BUS TICKET (Center Button) -->
+            <a class="bottom-nav-item nav-bus-ticket" data-view="live">
+                <div class="nav-bus-ticket-btn">
+                    <svg viewBox="0 0 50 24" class="bus-ticket-svg" fill="none">
+                        <!-- 4 Corner Scanner Brackets -->
+                        <path d="M 4 8 A 4.5 4.5 0 0 1 8.5 3.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+                        <path d="M 41.5 3.5 A 4.5 4.5 0 0 1 46 8" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+                        <path d="M 4 16 A 4.5 4.5 0 0 0 8.5 20.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+                        <path d="M 41.5 20.5 A 4.5 4.5 0 0 0 46 16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+
+                        <!-- Solid White Bus Silhouette -->
+                        <path d="M 14.5 6 C 14.5 4.5 21.5 4.5 21.5 6 L 22 7.5 H 22.8 C 23.2 7.5 23.5 7.8 23.5 8.2 V 9.2 C 23.5 9.6 23.2 9.9 22.8 9.9 H 22.5 V 17 C 22.5 17.5 22.2 18 21.6 18 H 20.8 V 19 C 20.8 19.6 19.8 19.6 19.8 19 V 18 H 16.2 V 19 C 16.2 19.6 15.2 19.6 15.2 19 V 18 H 14.4 C 13.8 18 13.5 17.5 13.5 17 V 9.9 H 13.2 C 12.8 9.9 12.5 9.6 12.5 9.2 V 8.2 C 12.5 7.8 12.8 7.5 13.2 7.5 H 14 L 14.5 6 Z" fill="#ffffff" />
+
+                        <!-- Solid White Ticket Silhouette -->
+                        <path d="M 28.5 5.5 H 30.5 A 2 2 0 0 0 34.5 5.5 H 36.5 A 1.8 1.8 0 0 1 38.3 7.3 V 17.2 A 1.8 1.8 0 0 1 36.5 19 H 34.5 A 2 2 0 0 0 30.5 19 H 28.5 A 1.8 1.8 0 0 1 26.7 17.2 V 7.3 A 1.8 1.8 0 0 1 28.5 5.5 Z" fill="#ffffff" />
+                    </svg>
+                    <span>BUS TICKET</span>
+                </div>
+            </a>
+
+            <!-- 4. Pass -->
+            <a class="bottom-nav-item active" data-view="passes">
+                <div class="nav-pass-badge">
+                    <svg viewBox="0 0 32 24" fill="none">
+                        <!-- Arch bridge cut across -->
+                        <path d="M 2 17.5 A 14 11 0 0 1 30 17.5" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" fill="none" />
+                        <!-- Digit 1 -->
+                        <path d="M 12.5 11.5 L 16 8.5 V 18" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        <path d="M 12 18 H 20" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" fill="none" />
+                    </svg>
+                </div>
+                <span>Pass</span>
+            </a>
+
+            <!-- 5. Account -->
             <a class="bottom-nav-item" data-view="profile">
-                <!-- Profile Icon: Solid user silhouette -->
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                <svg viewBox="0 0 24 24" class="nav-icon" fill="currentColor">
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M 4.5 19.5 C 4.5 15.2 8 13.5 12 13.5 C 16 13.5 19.5 15.2 19.5 19.5 C 19.5 20.2 18.8 20.5 18 20.5 H 6 C 5.2 20.5 4.5 20.2 4.5 19.5 Z" />
                 </svg>
-                <span>Profile</span>
+                <span>Account</span>
             </a>
         </div>
 

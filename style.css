@@ -568,7 +568,7 @@ body {
     box-shadow: 0 4px 10px rgba(255,255,255,0.1);
 }
 
-/* ================= PAGE 2: PASSES PAGE ================= */
+/* ================= PAGE 2: PASS PAGE ================= */
 #view-passes {
     background: #000;
     color: #fff;
@@ -598,7 +598,7 @@ body {
     left: 35.57%;
     top: 40.5%;
     width: 30.24%;
-    height: 18.18%;
+    height: 17.18%;
     border-radius: 15%; /* Responsive rounded corners */
     overflow: hidden;
     z-index: 1;
@@ -1776,7 +1776,7 @@ input:checked + .switch-slider:before {
 /* Timestamp Popup Card matching the video */
 .popup-timestamp-card {
     background: #f1e3c8;
-    background: #dfcaa2;
+    background: #e1d3b8;
     width: 224px;
     height: 156px;
     max-width: 82vw;
@@ -1793,8 +1793,8 @@ input:checked + .switch-slider:before {
 
 .popup-live-date {
     font-family: 'Consolas', 'Roboto Mono', 'SF Mono', monospace;
-    font-size: 1.35rem;
-    font-weight: 400;
+    font-size: 2.00rem;
+    font-weight: 250;
     color: #5d5345;
     margin-bottom: 8px;
     letter-spacing: 3px;
@@ -1811,8 +1811,9 @@ input:checked + .switch-slider:before {
 
 /* Photo Popup Card matching the video */
 .popup-photo-card {
-    background: #f1e3c8;
-    padding: 9px;
+    background: #eae2d2;
+    padding-left: 30px;
+     padding-right: 30px;
     border-radius: 20px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
     display: flex;
@@ -1822,8 +1823,8 @@ input:checked + .switch-slider:before {
 }
 
 .popup-photo-img {
-    width: 150px;
-    height: 170px;
+    width: 220px;
+    height: 250px;
     max-width: 78vw;
     max-height: 55vh;
     object-fit: cover;
